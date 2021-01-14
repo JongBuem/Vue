@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YouTube-h</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/9b79e876aa.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="js/title.js" defer></script>
+        <script src="js/headerBtn.js" defer></script>
+        <script src="js/actionsBtn.js" defer></script>
+        <script src="js/lastBtn.js" defer></script>
+    </head>
+    <body>
+
+        <div class="header">   
+            <header class="serchHeader" v-if="number==1">                   <!--상단 검색 메뉴-->   
+                <button class="serch_bt1 serch_bt"  @click="back"> 
+                    <i class="fas fa-arrow-left"></i>
+                </button>     
+                <input type="text" class="serch_input" placeholder="YouTube검색">
+                <button class="serch_bt2 serch_bt">
+                    <i class="fas fa-search fafa"></i>
+                </button>
+            </header>
+            <header class="main_header" v-else-if="number==2">                   <!--상단 메뉴-->
+                <div class="logo">
+                    <a class="logo_a" href="https://jongbuem.github.io/YouTube_Page_CSS/">
+                        <i class="fab fa-youtube"></i>
+                        <span class="title">YouTube</span>
+                    </a>
+                </div>
+                <div class="icons">
+                    <input type="text" class="icons_input">
+                    <button class="icons_bt1" @click="serchHeader">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button @click="hambugMenu" class="icons_bt2"> 
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+            </header>
+            <div class="wrapper">           <!--햄버거 버튼메뉴-->
+                <div><button>설정</button></div>
+                <div><button>재생 설정</button></div>
+                <div><button>YouTube의 내 데이터</button></div>
+                <div><button>의견보내기</button></div>
+                <div><button>도움말</button></div>
+                <div><button>신고</button></div>
+                <div><button class="wrapper_close">취소</button></div>
+            </div>
+        </div> 
+
+        <section class="movie" >  <!--비디오-->
+            <video controls src="video/IMG_0788.MOV" ></video>
+        </section>
+  
+        <div class="info_last">
+            <section class="info">   <!--가운데 메뉴-->
+                <div class="data">
+                        <ul class="hash">
+                            <li> #이게 언제야</li>
+                            <li> #허창무</li>
+                            <li> #구승휴</li>
+                            <li> #서주원</li>
+                        </ul>
+
+
+                        
+                        <div class="title1">
+                            <span v-bind:class="{text:False}" @click="classPush">
+                                승모씨와 임모씨가 술먹고?? 화제의 인물! 저기 누어있는 사람은 누구?!!
+                                [올해 주모상, 8전트 월드베스트 인간 제조기]
+                            </span>
+                            <button  @click="classPush" type="button" :class="{'title_bt':True, red:False}"  >
+                                <i class="fas fa-caret-down"></i>
+                            </button>
+                        </div>
+
+                        <div class="views">
+                            <span>조회수 12.7만회</span>
+                        </div>
+                </div>
+                    <ul class="actions">
+                            <li><button class="bt1"><i class="fas fa-thumbs-up"><span class="bt_up">좋아요</span></i></button></li>
+                            <li><button class="bt2"><i class="fas fa-thumbs-down"><span class="bt_dowm">싫어요</span></i></button></li>
+                            <li><button><i class="fas fa-share"><span>공유</span></i></button></li>
+                            <li><button><i class="fas fa-plus"><span>저장</span></i></button></li>
+                            <li><button><i class="fab fa-font-awesome-flag"><span>신고</span></i></button></li>
+                    </ul>
+                    <div class="channer">
+                        <div class="channer_data">           
+                                <img src="img/my.jpg" alt="">
+                            <div class="channer_info">
+                                <span class="chenner_title">8전트</span>
+                                <span class="chenner_titi">구독자 43.8만명</span>
+                            </div>
+                        </div>
+                        <div class="channer_bt">
+                            <span  v-if="True" :style="{color : Gray}" @click="godok">구독</span>
+                            <span  v-else="True" :style="{color : Red}" @click="going">구독중</span>
+                        </div>
+                    </div>
+                </section>
+        
+                <section class="last">   <!--마지막 메뉴-->
+                    <div class="last_title lastTile">
+                        <span> 다음동영상 </span>   
+                        <span>
+                            자동재생
+                            <button v-bind:class="{'last_btn':True, rightMove:False}"  @click="player">
+                                <div class="last_btnsub">aa</div>
+                            </button>
+                        </span>
+                    </div>
+                    <ul>
+                        <li class="item">
+                            <div class="item_img"><img src="img/1.JPG" alt=""></div>
+                            <div class="item_text">
+                                <span class="item_title">[아시아최초] 눈싸움 기계 이것만 있으면 1인자</span>
+                                <span class="item_content">최고다윽박EUGBAK</span>
+                                <span class="item_titi">조회수 10.3만회</span>          
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="item_img"><img src="img/2.JPG" alt=""></div>
+                            <div class="item_text">
+                                <span class="item_title">쇼미더머니 파이널 무대</span>
+                                <span class="item_content">Ment Tv</span>
+                                <span class="item_titi">조회수 321.5만회</span>          
+                            </div>
+                            
+                        </li>
+                        <li class="item">
+                            <div class="item_img"><img src="img/3.JPG" alt=""></div>
+                            <div class="item_text">
+                                <span class="item_title">대한민국 최초 푸스카스!!!!</span>
+                                <span class="item_content">축박공</span>
+                                <span class="item_titi">조회수 13.9만회</span>          
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="item_img"><img src="img/4.JPG" alt=""></div>
+                            <div class="item_text">
+                                <span class="item_title">죄송합니다 여러분</span>
+                                <span class="item_content">보겸보겸</span>
+                                <span class="item_titi">조회수 3.9만회</span>          
+                            </div>
+                            <li class="item">
+                                <div class="item_img"><img src="img/5.JPG" alt=""></div>
+                                <div class="item_text">
+                                    <span class="item_title">아스날 VS 애버튼 14R</span>
+                                    <span class="item_content">SPOTV</span>
+                                    <span class="item_titi">조회수 50.1만회</span>          
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item_img"><img src="img/6.JPG" alt=""></div>
+                                <div class="item_text">
+                                    <span class="item_title">장삐쭈 단편</span>
+                                    <span class="item_content">장삐쭈</span>
+                                    <span class="item_titi">조회수 128.3만회</span>          
+                                </div>
+                            </li>
+                        </li>
+                    </ul>
+                </section>
+        </div>
+
+    </body>
+</html>
